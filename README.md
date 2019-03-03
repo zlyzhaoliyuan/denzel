@@ -29,7 +29,7 @@
 
 ## 🐣 Introduction
 
-Denzel Washington is one my favorite actor.
+Denzel Washington is one of my favorite actor.
 
 He won 2 Oscars. [Another 82 wins & 166 nominations](https://www.imdb.com/name/nm0000243/awards?ref_=nm_awd)
 
@@ -76,7 +76,7 @@ He won 2 Oscars. [Another 82 wins & 166 nominations](https://www.imdb.com/name/n
 
 * A **must-watch** movie is a movie with a `metascore` higher than `70`.
 * API should listen locally the port `9292`.
-* Data should be stored in MongoDB. Backed either with a DaaS: [mLab](https://mlab.com) or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas). Either with a [container Docker](https://hub.docker.com/r/mvertes/alpine-mongo).
+* Data should be stored in MongoDB. Backed either with a DaaS: [mLab](https://mlab.com), [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) etc... Either with a [container Docker](https://hub.docker.com/r/mvertes/alpine-mongo).
 
 ### REST endpoints to implement
 
@@ -84,7 +84,7 @@ He won 2 Oscars. [Another 82 wins & 166 nominations](https://www.imdb.com/name/n
 
 Populate the database with all the [Denzel's movies from IMDb](https://www.imdb.com/name/nm0000243).
 
-You could use the [src/imdb.js](./src/imdb.js) exported function.
+You could use the [src/imdb.js](./src/imdb.js) ready-to-use exported function.
 
 ```sh
 ❯ curl -H "Accept: application/json" http://localhost:9292/movies/populate
@@ -117,7 +117,7 @@ Fetch a random **must-watch** movie.
 
 #### `GET /movies/:id`
 
-Fetch a specific movie
+Fetch a specific movie.
 
 ```sh
 ❯ curl -H "Accept: application/json" http://localhost:9292/movies/tt1907668
@@ -190,7 +190,7 @@ This endpoint accepts the following optional query string parameters:
 
 #### POST /movies/:id
 
-Set a watched date and a review.
+Save a watched date and a review.
 
 This endpoint accepts the following post parameters:
 
@@ -198,7 +198,7 @@ This endpoint accepts the following post parameters:
 * `review` - the personal review
 
 ```sh
-❯ curl -X POST -d '{"date": , "review": "😍 🔥"}' -H "Content-Type: application/json" http://localhost:9292/movies/tt0328107
+❯ curl -X POST -d '{"date": "2019-03-04", "review": "😍 🔥"}' -H "Content-Type: application/json" http://localhost:9292/movies/tt0328107
 {
   "_id": "507f191e810c19729de860ea"
   "status": 200,
@@ -208,13 +208,13 @@ This endpoint accepts the following post parameters:
 
 ### GraphQL endpoints to implement
 
-Same as REST API with `/graphql` as first root path.
+Same definitions as REST API with `/graphql` endpoint.
 
-* `GET /graphql/movies/populate`
-* `GET /graphql/movies`
-* `GET /graphql/movies/:id`
-* `GET /graphql/movies/search`
-* `POST /graphql/movies/:id`
+* Populate the database
+* Fetch a random **must-watch** movie
+* Fetch a specific movie
+* Search for Denzel's movies
+* Save a watched date and a review.
 
 #### (A suggested) Schema
 
@@ -224,14 +224,31 @@ schema {
 }
 
 type Query {
-  movies: [Movies]
+  movies: [Movie]
+  movie: Movie
 }
 
 type Movie {
-  title: String
-  synopsis: String
   link: String
-  year: nt
+  metascore: Int
+  synopsis: String
+  title: String
+  year: Int
+}
+```
+
+```sh
+❯ curl -d '{"query": "movie {link metascore synopsis title year}"}' -H "Content-Type: application/json" http://localhost:9292/graphql
+{
+  "data": {
+    "movie": {
+      "link": "https://www.imdb.com/title/tt0174856/?ref_=nm_flmg_act_23",
+      "metascore": 74,
+      "synopsis": "The story of Rubin \"Hurricane\" Carter, a boxer wrongly imprisoned for murder, and the people who aided in his fight to prove his innocence.",
+      "title": "Hurricane Carter (1999)",
+      "year": 1999
+    }
+  }
 }
 ```
 
