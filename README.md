@@ -94,6 +94,8 @@ You could use the [src/imdb.js](./src/imdb.js) exported function.
 }
 ```
 
+Start [node sandbox.js](./sandbox.js) for an usage example.
+
 #### `GET /movies`
 
 Fetch a random **must-watch** movie.
@@ -101,14 +103,15 @@ Fetch a random **must-watch** movie.
 ```sh
 ❯ curl -H "Accept: application/json" http://localhost:9292/movies
 {
-  "id":
-  "metascore":
-  "rating":
-  "link":
-  "poster":,
-  "review",
-  "votes",
-  "synopsis"
+  "id": "tt0765429",
+  "link": "https://www.imdb.com/title/tt0765429/?ref_=nm_flmg_act_13",
+  "metascore": 76,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMTkyNzY5MDA5MV5BMl5BanBnXkFtZTcwMjg4MzI3MQ@@._V1_UY268_CR4,0,182,268_AL_.jpg",
+  "rating": 7.8,
+  "synopsis": "An outcast New York City cop is charged with bringing down Harlem drug lord Frank Lucas, whose real life inspired this partly biographical film.",
+  "title": "American Gangster (2007)",
+  "votes": 362.951,
+  "year": 2007
 }
 ```
 
@@ -119,14 +122,15 @@ Fetch a specific movie
 ```sh
 ❯ curl -H "Accept: application/json" http://localhost:9292/movies/tt1907668
 {
-  "id":
-  "metascore":
-  "rating":
-  "link":
-  "poster":,
-  "review",
-  "votes",
-  "synopsis"
+  "id": "tt1907668",
+  "link": "https://www.imdb.com/title/tt1907668/?ref_=nm_flmg_act_7",
+  "metascore": 76,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMTUxMjI1OTMxNl5BMl5BanBnXkFtZTcwNjc3NTY1OA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+  "rating": 7.3,
+  "synopsis": "An airline pilot saves almost all his passengers on his malfunctioning airliner which eventually crashed, but an investigation into the accident reveals something troubling.",
+  "title": "Flight (2012)",
+  "votes": 299.625,
+  "year": 2012
 }
 ```
 
@@ -140,33 +144,47 @@ This endpoint accepts the following optional query string parameters:
 * `metascore` - filter by metascore (default: 0)
 
 ```sh
-❯ curl -H "Accept: application/json" http://localhost:9292/movies/search?limit=5&metascore=90
+❯ curl -H "Accept: application/json" http://localhost:9292/movies/search?limit=5&metascore=77
 {
-  "limit": 5,
+  "limit": 3,
   "results": [
-    {
-      "id":
-      "metascore":
-      "rating":
-      "link":
-      "poster":,
-      "review",
-      "votes",
-      "synopsis"
-    },
-    {
-      "id":
-      "metascore":
-      "rating":
-      "link":
-      "poster":,
-      "review",
-      "votes",
-      "synopsis"
-    }
-  ],
+  {
+    "id": "tt2671706",
+    "link": "https://www.imdb.com/title/tt2671706/?ref_=nm_flmg_act_3",
+    "metascore": 79,
+    "poster": "https://m.media-amazon.com/images/M/MV5BOTg0Nzc1NjA0MV5BMl5BanBnXkFtZTgwNTcyNDQ0MDI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 7.2,
+    "synopsis": "A working-class African-American father tries to raise his family in the 1950s, while coming to terms with the events of his life.",
+    "title": "Fences (2016)",
+    "votes": 84.291,
+    "year": 2016
+  },
+  {
+    "id": "tt0115956",
+    "link": "https://www.imdb.com/title/tt0115956/?ref_=nm_flmg_act_31",
+    "metascore": 77,
+    "poster": "https://m.media-amazon.com/images/M/MV5BODJlOTlkNzUtN2U2OC00NWUxLTg3MjgtNGVmZGU5ZTk0ZjM4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 6.6,
+    "synopsis": "A U.S. Army officer, despondent about a deadly mistake he made, investigates a female chopper commander's worthiness for the Medal of Honor.",
+    "title": "À l'épreuve du feu (1996)",
+    "votes": 46.271,
+    "year": 1996
+  },
+  {
+    "id": "tt0112857",
+    "link": "https://www.imdb.com/title/tt0112857/?ref_=nm_flmg_act_32",
+    "metascore": 78,
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjI3NjFiNmMtMmQ1ZC00OTUwLWJlMWMtM2UxY2M2NDQ0OWJhXkEyXkFqcGdeQXVyNTI4MjkwNjA@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 6.7,
+    "synopsis": "An African-American man is hired to find a woman, and gets mixed up in a murderous political scandal.",
+    "title": "Le diable en robe bleue (1995)",
+    "votes": 15.686,
+    "year": 1995
+  }
+]
+,
   "status": 200,
-  "total": 2,
+  "total": 3,
 }
 ```
 
