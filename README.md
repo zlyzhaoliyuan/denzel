@@ -77,6 +77,7 @@ He won 2 Oscars. [Another 82 wins & 166 nominations](https://www.imdb.com/name/n
 * A **must-watch** movie is a movie with a `metascore` higher than `70`.
 * API should listen locally the port `9292`.
 * Data should be stored in MongoDB. Backed either with a DaaS: [mLab](https://mlab.com), [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) etc... Either with a [container Docker](https://hub.docker.com/r/mvertes/alpine-mongo).
+* To test and check your API, you should use a client like [Insomnia](https://insomnia.rest) or [Postman](https://www.getpostman.com/products)
 
 ### REST endpoints to implement
 
