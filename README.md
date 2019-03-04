@@ -91,7 +91,6 @@ You could use the [src/imdb.js](./src/imdb.js) ready-to-use exported function.
 ❯ curl -H "Accept: application/json" http://localhost:9292/movies/populate
 {
   "total": 56
-  "status": 200
 }
 ```
 
@@ -144,10 +143,12 @@ This endpoint accepts the following optional query string parameters:
 * `limit` - number of movies to return (default: 5)
 * `metascore` - filter by metascore (default: 0)
 
+The results array should be sorted by metascore in descending way.
+
 ```sh
 ❯ curl -H "Accept: application/json" http://localhost:9292/movies/search?limit=5&metascore=77
 {
-  "limit": 3,
+  "limit": 5,
   "results": [
   {
     "id": "tt2671706",
@@ -181,11 +182,8 @@ This endpoint accepts the following optional query string parameters:
     "title": "Le diable en robe bleue (1995)",
     "votes": 15.686,
     "year": 1995
-  }
-]
-,
-  "status": 200,
-  "total": 3,
+  }],
+  "total": 3
 }
 ```
 
@@ -202,7 +200,6 @@ This endpoint accepts the following post parameters:
 ❯ curl -X POST -d '{"date": "2019-03-04", "review": "😍 🔥"}' -H "Content-Type: application/json" http://localhost:9292/movies/tt0328107
 {
   "_id": "507f191e810c19729de860ea"
-  "status": 200,
 }
 ```
 
