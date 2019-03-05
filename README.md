@@ -96,6 +96,37 @@ You could use the [src/imdb.js](./src/imdb.js) ready-to-use exported function.
 
 Start [node sandbox.js](./sandbox.js) for an usage example.
 
+```sh
+❯ node sandbox.js
+📽️  fetching filmography of nm0000243...
+🍿 56 movies found.
+[
+  {
+    "link": "https://www.imdb.com/title/tt3766354/?ref_=nm_flmg_act_1",
+    "id": "tt3766354",
+    "metascore": 50,
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTU2OTYzODQyMF5BMl5BanBnXkFtZTgwNjU3Njk5NTM@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 6.7,
+    "synopsis": "Robert McCall serves an unflinching justice for the exploited and oppressed, but how far will he go when that is someone he loves?",
+    "title": "Equalizer 2 (2018)",
+    "votes": 85.815,
+    "year": 2018
+  },
+  {
+    "link": "https://www.imdb.com/title/tt6000478/?ref_=nm_flmg_act_2",
+    "id": "tt6000478",
+    "metascore": 58,
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjMyNjkxMTg2NV5BMl5BanBnXkFtZTgwNjkyNTk0MzI@._V1_UX182_CR0,0,182,268_AL_.jpg",
+    "rating": 6.4,
+    "synopsis": "Roman J. Israel, Esq., a driven, idealistic defense attorney, finds himself in a tumultuous series of events that lead to a crisis and the necessity for extreme action.",
+    "title": "L'Affaire Roman J. (2017)",
+    "votes": 22.524,
+    "year": 2017
+  },
+  ...
+]
+```
+
 #### `GET /movies`
 
 Fetch a random **must-watch** movie.
@@ -120,18 +151,18 @@ Fetch a random **must-watch** movie.
 Fetch a specific movie.
 
 ```sh
-❯ curl -H "Accept: application/json" http://localhost:9292/movies/tt1907668
+❯ curl -H "Accept: application/json" http://localhost:9292/movies/tt0477080
 {
-  "id": "tt1907668",
-  "link": "https://www.imdb.com/title/tt1907668/?ref_=nm_flmg_act_7",
-  "metascore": 76,
-  "poster": "https://m.media-amazon.com/images/M/MV5BMTUxMjI1OTMxNl5BMl5BanBnXkFtZTcwNjc3NTY1OA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
-  "rating": 7.3,
-  "synopsis": "An airline pilot saves almost all his passengers on his malfunctioning airliner which eventually crashed, but an investigation into the accident reveals something troubling.",
-  "title": "Flight (2012)",
-  "votes": 299.625,
-  "year": 2012
-}
+  "id": "tt0477080",
+  "link": "https://www.imdb.com/title/tt0477080/?ref_=nm_flmg_act_9",
+  "metascore": 69,
+  "poster": "https://m.media-amazon.com/images/M/MV5BMjI4NDQwMDM0N15BMl5BanBnXkFtZTcwMzY1ODMwNA@@._V1_UX182_CR0,0,182,268_AL_.jpg",
+  "rating": 6.8,
+  "synopsis": "With an unmanned, half-mile-long freight train barreling toward a city, a veteran engineer and a young conductor race against the clock to prevent a catastrophe.",
+  "title": "Unstoppable (2010)",
+  "votes": 171.245,
+  "year": 2010
+  }
 ```
 
 #### `GET /movies/search`
