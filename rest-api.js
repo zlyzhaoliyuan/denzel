@@ -2,11 +2,11 @@ var express = require('express');
 let bodyParser = require('body-parser');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
+
 var url = "mongodb+srv://zly:zly@zly-mongo-tqkqg.mongodb.net/test?retryWrites=true"
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-
 
 app.get('/movies/populate', function (req, res) {
     MongoClient.connect(url, { useNewUrlParser: true }, (err, db) => {
@@ -44,7 +44,6 @@ app.get('/movie/:id',  (req, res) => {
   
  });
  
-
  app.get('^/movies/search',  (req, res) => {
    var score = parseInt(req.query.metascore)
    var count = parseInt(req.query.limit)
@@ -69,7 +68,6 @@ app.get('/movie/:id',  (req, res) => {
     });
   });
  });
- 
  
 var server = app.listen(9292,  () => {
   var host = server.address().address
