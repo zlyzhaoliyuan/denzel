@@ -8,7 +8,7 @@ var url = "mongodb+srv://zly:zly@zly-mongo-tqkqg.mongodb.net/test?retryWrites=tr
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.get('/movies/populate', function (req, res) {
+app.get('/movies/populate',  (req, res) =>{
     MongoClient.connect(url, { useNewUrlParser: true }, (err, db) => {
       var dbo = db.db("zly-db");
       dbo.collection("movies_collection"). find({}).toArray(function(err, result) { 
@@ -20,7 +20,7 @@ app.get('/movies/populate', function (req, res) {
   });
   });
 
-app.get('/movies', function (req, res) {
+app.get('/movies', (req, res) =>{
   MongoClient.connect(url, { useNewUrlParser: true }, (err, db) =>{
     var dbo = db.db("zly-db");
     dbo.collection("movies_collection"). find({}).toArray((err, result) =>{ 
